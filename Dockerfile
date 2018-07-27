@@ -15,4 +15,7 @@ RUN apt-get update && apt-get install -y \
 RUN cd /tmp && git clone -b v3.8.0 --single-branch --depth 1 https://cmake.org/cmake.git && cd cmake
 RUN cd /tmp/cmake && ./configure && make -j$(nproc) && make install && cd .. && rm -rf cmake
 
+#remove python2
+RUN apt remove python -y && apt autoremove -y
+
 
