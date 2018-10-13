@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
     clang
 
 ENV DISPLAY :0
+ENV XAUTHORITY /tmp/.docker.xauth
 
 #XSOCK=/tmp/.X11-unix
 #XAUTH=/tmp/.docker.xauth
