@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 	git \
 	libboost-all-dev \
 	libqt4-dev \
-	libqt5-dev \
+	qtdeclarative5-dev \
 	python3 \
 	python3-path \
 	x11-apps
