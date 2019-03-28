@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
 	qtdeclarative5-dev \
 	python3 \
 	python3-path \
-	x11-apps
+	x11-apps \
+	openssl1.0 libssl1.0-dev
 	
 #cmake with specific version (see -b flag)
 RUN cd /tmp && git clone -b v3.12.0 --single-branch --depth 1 https://cmake.org/cmake.git && cd cmake
