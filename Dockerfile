@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y \
 	git \
 	libboost-all-dev \
 	libqt4-dev \
-	qtdeclarative5-dev \
 	python3 \
 	python3-path \
 	x11-apps
@@ -19,6 +18,10 @@ RUN cd /tmp/cmake && ./configure && make -j$(nproc) && make install && cd .. && 
 
 RUN apt-get update && apt-get install -y \
     clang
+
+COPY qt5-install.qs /tmp/
+RUN cd /tmp && wget https://download.qt.io/archive/qt/5.12/5.12.1/qt-opensource-linux-x64-5.12.1.run
+RUN cd /tmp && qt-opensource-linux-x64-5.12.1.run --script qt-install.qs --silent
 
 ENV DISPLAY :0
 ENV XAUTHORITY /tmp/.docker.xauth
