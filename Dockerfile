@@ -19,9 +19,9 @@ RUN cd /tmp/cmake && ./configure && make -j$(nproc) && make install && cd .. && 
 RUN apt-get update && apt-get install -y \
     clang
 
-COPY qt5-install.qs /tmp/
-RUN cd /tmp && wget https://download.qt.io/archive/qt/5.12/5.12.1/qt-opensource-linux-x64-5.12.1.run
-RUN cd /tmp && qt-opensource-linux-x64-5.12.1.run --script qt-install.qs --silent
+ADD qt5.12.1_gcc64_1.tar.xz /opt/Qt5/
+ADD qt5.12.1_gcc64_2.tar.xz /opt/Qt5/
+ENV QT5_DIR /opt/Qt5/lib/cmake/Qt5
 
 ENV DISPLAY :0
 ENV XAUTHORITY /tmp/.docker.xauth
