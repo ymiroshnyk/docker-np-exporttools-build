@@ -4,6 +4,7 @@ MAINTAINER Yuriy Miroshnyk <y.miroshnyk@gmail.com>
 
 RUN apt-get update && apt-get install -y \
 	build-essential \
+	libboost-all-dev \
 	python3 \
 	python3-path
 
@@ -21,10 +22,3 @@ RUN apt-get install -y \
 	git
 RUN cd /tmp && git clone -b v3.12.0 --single-branch --depth 1 https://cmake.org/cmake.git && cd cmake
 RUN cd /tmp/cmake && ./configure && make -j$(nproc) && make install && cd .. && rm -rf cmake
-
-# boost
-ADD https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz /tmp/
-#RUN apt-get install -y \
-#	python-dev
-#autotools-dev libicu-dev build-essential libbz2-dev
-RUN cd /tmp && tar -xzf ./boost* && cd boost* && ./bootstrap.sh --prefix=/usr/ && ./b2 --link=static --build-type=minimal -j$(nproc) install
