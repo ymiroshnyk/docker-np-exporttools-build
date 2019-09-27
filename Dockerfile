@@ -11,10 +11,8 @@ RUN apt-get update && apt-get install -y \
 # ccache
 RUN apt update && apt install -y \
 	ccache
-RUN /usr/sbin/update-ccache-symlinks
 ENV CCACHE_COMPILERCHECK=content \
 	CCACHE_SLOPPINESS=pch_defines,time_macros \
-	PATH="/usr/lib/ccache:${PATH}" \
 	CCACHE_DIR=/ccache
 
 # cmake
